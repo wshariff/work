@@ -8,18 +8,15 @@ import java.lang.Math;
 public class studentloan {
 
     public static void main (String[] args) {
-        // Stores the input value in the variable loanStart
         Scanner input1 = new Scanner( System.in );
         String loanStart;
         System.out.println("How much do you owe at the start of the year? ");
         loanStart = input1.next( );
 
-        // Stores the input value in the variable loanPaid  
         String loanPaid;
         System.out.println("How much have you paid off this year?");
         loanPaid = input1.next( );
 
-        // Assigning the variables dloanStart and dloanPaid 
         double dloanStart = Double.parseDouble(loanStart); 
         double dloanPaid = Double.parseDouble(loanPaid); 
         
