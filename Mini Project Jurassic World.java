@@ -12,9 +12,8 @@
 
        
         Scanner newname1 = new Scanner( System.in );
-        String dinosour1;
-        System.out.println("Please name the species of the dinosour you've made.");
-        dinosour1 = newname1.next( );
-
+        String dinosaur1;
+        System.out.println("Please name the species of the dinosaur you've made.");
+        dinosaur1 = newname1.next( );
 
    }
