@@ -1,7 +1,7 @@
 /* Author: Waheeda Shariff
    Date: 05/10/2018 */
 import java.util.Scanner; 
-
+// This is a program that rand number genrator to tell hunger level of dinosaur 
   class jurassic {
        public static void main ( String [] args) {
 
