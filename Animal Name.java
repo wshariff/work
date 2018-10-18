@@ -1,10 +1,12 @@
 import java.util.Scanner; 
+import java.util.Arrays;
 
-public class Animal_Name {
+public class Animal {
     public static void main ( String [] args) {
 
         showAnimalName();
         alphabeticAnimal();
+        System.out.println("Finished Main");
     }
 
     public static void showAnimalName() {
@@ -14,127 +16,120 @@ public class Animal_Name {
         System.out.println("Please enter a letter of the alphabet. ");
         animalLetter = letter.next( );
 
-        if(animalLetter.equals("a")){
-            System.out.println("You are an Aligator! ");
-        }
+        // change case letters as "a"
 
-        else if (animalLetter.equals("")){
-            System.out.println("You need to enter a letter first. ");
+      	switch (letter) {
+        	case a:  animalLetter = "You are an Aligator!";
+            break;
+        	
+        	case b:  animalLetter = "You are an Bear";
+          	break;
+            
+        	case c:  animalLetter = "You are an Capybara!";
+			break;
+            
+        	case d:  animalLetter = "You are an Donkey!";
+			break;
+            
+        	case e:  animalLetter = "You are an Elephant!";
+            break;
+       
+			case f:  animalLetter = "You are an Fox! ";            
+         
+           
+          case g:  animalLetter = "You are an Gorilla! ";
+            break;
+       
+        	case h:  animalLetter = "You are an Horse! ";
+            break;
+         
+            case h:  animalLetter = "You are an Iguana!";
+		    break;
+          
+            case h:  animalLetter = "You are an Jaguar!";
+		    break;
 
-        }
+            case h:  animalLetter ="You are an Kakapoo!";
+		    break;
+            
+            case h:  animalLetter ="You are an Lemming! ";
+            break;
 
-        else if (animalLetter.equals("b")){
-            System.out.println("You are an Bear! ");
-        }
+            case h:  animalLetter ="You are an Macaw!";
+            break;
+                
+            case h:  animalLetter ="You are an Newt!";
+            break;
 
-        else if (animalLetter.equals("c")){
-            System.out.println("You are an Capybara! ");
-        }
+            case h:  animalLetter ="You are an Olm!";
+            break;
 
-        else if (animalLetter.equals("d")){
-            System.out.println("You are an Donkey! ");
-        }
+            case h:  animalLetter ="You are an Pademelon! ";
+            break;
 
-        else if (animalLetter.equals("e")){
-            System.out.println("You are an Elephant! ");
-        }
+            case h:  animalLetter ="You are an Quoll! ";
+            break;
+                
+            case h:  animalLetter ="You are an Ragdoll! ";
+            break;           
 
-        else if (animalLetter.equals("f")){
-            System.out.println("You are an Fox! ");
-        }
+            case h:  animalLetter ="You are an Salamander! ";
+            break;
 
-        else if (animalLetter.equals("g")){
-            System.out.println("You are an Gorilla! ");
-        }
+            case h:  animalLetter ="You are an Thorny Devil! ";
+            break;
+                
+            case h:  animalLetter ="You are an Uakari! ";
+            break;
+                
+            case h:  animalLetter ="You are an Vulture! ";
+            break;
+                
+            case h:  animalLetter ="You are an Warthog! ";
+            break;
 
-        else if (animalLetter.equals("h")){
-            System.out.println("You are an Horse! ");
-        }
+            case h:  animalLetter ="You are an X-Ray Tetra! ";
+            break;
+                
+            case h:  animalLetter ="You are an Yak! ";
+            break;
+                
+            case h:  animalLetter ="You are an Zebu! ";
+            break;
 
-        else if (animalLetter.equals("i")){
-            System.out.println("You are an Iguana! ");
-        }
+            default: animalLetter = "You need to enter a letter between a to z, please.";
+            break;
 
-        else if (animalLetter.equals("j")){
-            System.out.println("You are an Jaguar! ");
-        }
-
-        else if (animalLetter.equals("k")){
-            System.out.println("You are an Kakapoo! ");
-        }
-
-        else if (animalLetter.equals("l")){
-            System.out.println("You are an Lemming! ");
-        }
-
-        else if (animalLetter.equals("m")){
-            System.out.println("You are an Macaw! ");
-        }
-
-        else if (animalLetter.equals("n")){
-            System.out.println("You are an Newt! ");
-        }
-
-        else if (animalLetter.equals("o")){
-            System.out.println("You are an Olm! ");
-        }
-
-        else if (animalLetter.equals("p")){
-            System.out.println("You are an Pademelon! ");
-        }
-
-        else if (animalLetter.equals("q")){
-            System.out.println("You are an Quoll! ");
-        }
-
-        else if (animalLetter.equals("r")){
-            System.out.println("You are an Ragdoll! ");
-        }
-
-        else if (animalLetter.equals("s")){
-            System.out.println("You are an Salamander! ");
-        }
-
-        else if (animalLetter.equals("t")){
-            System.out.println("You are an Thorny Devil! ");
-        }
-
-        else if (animalLetter.equals("u")){
-            System.out.println("You are an Uakari! ");
-        }
-
-        else if (animalLetter.equals("v")){
-            System.out.println("You are an Vulture! ");
-        }
-
-        else if (animalLetter.equals("w")){
-            System.out.println("You are an Warthog! ");
-        }
-
-        else if (animalLetter.equals("x")){
-            System.out.println("You are an X-Ray Tetra! ");
-        }
-
-        else if (animalLetter.equals("y")){
-            System.out.println("You are an Yak! ");
-        }
-
-        else if (animalLetter.equals("z")){
-            System.out.println("You are an Zebu! ");
-        }
-
-        else {
-            System.out.println("You need to enter a letter between a to z, please. ");
-        } 
     }
 
     public static void alphabeticAnimal() {
-        
+    
+      
+      	
         Scanner number = new Scanner(System.in ); 
         System.out.println("Please enter a number between 1 to 5. ");
         String animalNumber = number.next( );
+
+        int iAnimalNumber = Integer.parseInt(animalNumber); 
         
-        // create for loop for the number of times the user will need to enter the animal name. ask them in the loop to enter animal name 
-        System.out.println("Please enter " + animalNumber + " animal names.");
+        /* create for loop for the number of times the user will need to enter the animal name. 
+        ask them in the loop to enter animal name */
+
+
+        //Array for the animal names 
+        String[] animals = new String[iAnimalNumber];
+        
+        number.nextLine();
+
+        
+        for(int i=0; i<iAnimalNumber; i++){
+            System.out.println("Enter an animal ");
+            animals[i] = number.nextLine();
+        }
+      
+      	Arrays.sort(animals);
+        System.out.print("Your animals are: "+ Arrays.toString(animals));
+        
+        System.out.println();
     }
 }
