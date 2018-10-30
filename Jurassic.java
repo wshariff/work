@@ -57,18 +57,20 @@ public class Jurassic {
     //hungry dinosaur needs to go hunting 
 
     // commit changes for herbivore from uni to create loop until correct eating type is entered
+	
+	// create while loop
         if (hungerLevel <=5) {
             System.out.println (hungerLevel <=5);
             if (eatingType.contains ("carnivore") | eatingType.contains ("omnivore")){
                 System.out.println( dinoName + "is hungry, so it is time to go hunting.");
             }
 
-            if (eatingType.contains ("herivore")) {
+            if (eatingType.contains ("herbivore")) {
                 System.out.println( dinoName + " is hungry, so it is time to go find plants.");
             }
                 
             else {
-                System.out.println("Please enter whether " + dinoName + " is a carnivore, omnivore or herivore. ");	
+                System.out.println("Please enter whether " + dinoName + " is a carnivore, omnivore or herbivore. ");	
             }
 
         }
