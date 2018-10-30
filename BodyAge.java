@@ -1,7 +1,7 @@
 /* Author: Waheeda Shariff
    Date: 04/10/2018 */
 
-public class bodyage {
+public class BodyAge {
 
 public static void main (String[] args) {
     Scanner input1 = new Scanner( System.in );
