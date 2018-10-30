@@ -5,7 +5,7 @@
 import java.util.Scanner; 
 import java.lang.Math;
 
-public class studentloan {
+public class StudentLoan {
 
     public static void main (String[] args) {
         Scanner input1 = new Scanner( System.in );
