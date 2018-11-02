@@ -3,14 +3,13 @@
 import java.util.Scanner; 
 import java.util.Random; 
 // This is a program that rand number genrator to tell hunger level of dinosaur 
-class Jurassic {
+public class Jurassic {
     public static void main ( String [] args) {
 
         jurassicWorld();
-        Dinosaur dino = new Dinosaur ();
-        dino.name = nameSpecies();
-        dino.hungerLevel = setHungerLevel();
-        checkHungerLevel(dino);
+        String dinoName = nameSpecies();
+        int hungerLevel = setHungerLevel();
+        checkHungerLevel(dinoName , hungerLevel);
             
     }// END main
 
@@ -49,49 +48,44 @@ class Jurassic {
     
     }
     
-    public static void checkHungerLevel(Dinosaur dino){
+    public static void checkHungerLevel(String dinoName,int hungerLevel){
     
         Scanner newname1 = new Scanner( System.in );
-        System.out.println("Is " + dino.name + " a carnivore, herbivore or omnivore?");
+        System.out.println("Is " + dinoName + " a carnivore, herbivore or omnivore?");
         String eatingType = newname1.next( );
 
     //hungry dinosaur needs to go hunting 
 
     // commit changes for herbivore from uni to create loop until correct eating type is entered
-        if (dino.hungerLevel <=5) {
+	
+	// create while loop
+        if (hungerLevel <=5) {
             System.out.println (hungerLevel <=5);
             if (eatingType.contains ("carnivore") | eatingType.contains ("omnivore")){
-                System.out.println( dino.name + "is hungry, so it is time to go hunting.");
+                System.out.println( dinoName + "is hungry, so it is time to go hunting.");
             }
 
-            if (eatingType.contains ("herivore")) {
-                System.out.println( dino.name + " is hungry, so it is time to go find plants.");
+            if (eatingType.contains ("herbivore")) {
+                System.out.println( dinoName + " is hungry, so it is time to go find plants.");
             }
                 
             else {
-                System.out.println("Please enter whether " + dino.name + " is a carnivore, omnivore or herivore. ");	
+                System.out.println("Please enter whether " + dinoName + " is a carnivore, omnivore or herbivore. ");	
             }
 
         }
 
     // 
-        else if (dino.hungerLevel >=6) {
+        else if (hungerLevel >=6) {
 
-            System.out.println( dino.name + " is in danger and needs your help.");
-            System.out.println("Tyrannosaurus Rex is looking for its next prey and is ready to attack " + dino.name );
+            System.out.println( dinoName + " is in danger and needs your help.");
+            System.out.println("Tyrannosaurus Rex is looking for its next prey and is ready to attack " + dinoName );
         }
      /*ideas 1)dinosaur is full, can go find somewhere to go sleep or go to sleep.
     2) interspecies rivalry or carnivore attack = dinosaur needs to defend themselves 
     3)dinosaur is sick/injured
     4) old dinosaur can't defend itself that well 
     5)ask user how old their dinosaur is
-
-    replace dinoName and hungerLevel with dino.name and dino.hungerLevel 
 */
 }
-}
-
-class Dinosaur {
-    String name;
-    int hungerLevel; 
 }
