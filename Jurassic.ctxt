@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.target=Jurassic
+comment1.params=args
+comment1.target=void\ main(java.lang.String[])
+comment2.params=
+comment2.target=void\ jurassicWorld()
+comment3.params=
+comment3.target=java.lang.String\ nameSpecies()
+comment4.params=
+comment4.target=int\ setHungerLevel()
+comment5.params=dinoName\ hungerLevel
+comment5.target=void\ checkHungerLevel(java.lang.String,\ int)
+numComments=6
