@@ -27,35 +27,40 @@ public static void main (String[] args) {
 	
 	if (dHeartRate < 60) {
 		dAge= dAge-4;
+		//System.out.println(dAge);
 	}
 
-	else if (dHeartRate =60 && dHeartRate <=64) {
+	else if (dHeartRate <=60 && dHeartRate <=64) {
 		dAge= dAge-2;
-	
+		//System.out.println(dAge);
 	}
 	
-	else if (dHeartRate =65 && dHeartRate<=75) {
-		dAge= dAge+1;
-	
+	else if (dHeartRate <=65 && dHeartRate<=75) {
+    		dAge= dAge+1;
+		//System.out.println(dAge);
 	}
-
+ 
 	else if (dHeartRate >=73) {
 		dAge= dAge+2;
-	
+		//System.out.println(dAge);
 	}
 
 	if (dStretch < 25) {
 		dAge= dAge+3;
+		//System.out.println(dAge);
 	}
 
-    	else if (dStretch =25 && dStretch <=36) {
+    	else if (dStretch <=25 && dStretch <=36) {
 		dAge= dAge+2;
+		//System.out.println(dAge);
 	}
 
-	else if (dStretch =37) {
+	else if (dStretch == 37) {
 		dAge= dAge+0;
+		//System.out.println(dAge);
 	}
-
+	
+	System.out.println("Your body's age is " + +dAge);
 
 }
 
