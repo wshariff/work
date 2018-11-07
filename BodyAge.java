@@ -24,22 +24,23 @@ public static void main (String[] args) {
 	double dAge = Double.parseDouble(age); 
 	double dHeartRate = Double.parseDouble(heartRate); 
 	double dStretch = Double.parseDouble(stretch); 
+	//System.out.println(dAge);
 	
 	if (dHeartRate < 60) {
 		dAge= dAge-4;
 		//System.out.println(dAge);
 	}
 
-	else if (dHeartRate <=60 && dHeartRate <=64) {
+	else if (dHeartRate >=60 && dHeartRate <=64) {
 		dAge= dAge-2;
 		//System.out.println(dAge);
 	}
 	
-	else if (dHeartRate <=65 && dHeartRate<=75) {
+	else if (dHeartRate >=65 && dHeartRate<=72) {
     		dAge= dAge+1;
-		//System.out.println(dAge);
+		System.out.println(dAge);
 	}
- 
+
 	else if (dHeartRate >=73) {
 		dAge= dAge+2;
 		//System.out.println(dAge);
@@ -50,7 +51,7 @@ public static void main (String[] args) {
 		//System.out.println(dAge);
 	}
 
-    	else if (dStretch <=25 && dStretch <=36) {
+    	else if (dStretch >=25 && dStretch <=36) {
 		dAge= dAge+2;
 		//System.out.println(dAge);
 	}
@@ -60,6 +61,15 @@ public static void main (String[] args) {
 		//System.out.println(dAge);
 	}
 	
+	else if (dStretch >=38 && dStretch <=40) {
+		dAge= dAge-2;
+		//System.out.println(dAge);
+	}
+	
+	else if (dStretch >=40) {
+		dAge= dAge-3;
+		//System.out.println(dAge);
+	}
 	System.out.println("Your body's age is " + +dAge);
 
 }

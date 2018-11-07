@@ -72,7 +72,7 @@ Create if statement for the eating type of the dinosaur- omnivore...*/
             }
 
             if (eatingType.contains ("herbivore")) {
-                 System.out.println( dino.name + " is hungry, so it is time to go find plants.");
+                System.out.println( dino.name + " is hungry, so it is time to go find plants.");
             }
                 
             else {
