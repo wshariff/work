@@ -9,11 +9,11 @@ class Jurassic {
     public static void main ( String [] args) {
 
         jurassicWorld();
-	Dinosaur dino = new Dinosaur();
-	dino.name = nameSpecies();
-	dino.hungerLevel = setHungerLevel();	
-	checkHungerLevel(dino);        
-	
+        Dinosaur dino = new Dinosaur();
+        dino.name = nameSpecies();
+        dino.hungerLevel = setHungerLevel();	
+        checkHungerLevel(dino);        
+        
             
     }// END main
 	
