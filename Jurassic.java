@@ -53,12 +53,28 @@ Create if statement for the eating type of the dinosaur- omnivore...*/
     
     }
     //END setHungerLevel
-    public static void checkHungerLevel(Dinosaur dino){
-    
-        Scanner newname1 = new Scanner( System.in );
-        System.out.println("Is " + dino.name + " a carnivore, herbivore or omnivore?");
-        String eatingType = newname1.next( );
 
+    public static void checkHungerLevel(Dinosaur dino){
+	Scanner newname1 = new Scanner( System.in );
+	System.out.println("Is " + dino.name + " a carnivore, herbivore or omnivore?");
+	String eatingType = newname1.next( );
+	
+	while (!(eatingType.contains ("carnivore")) ||!(eatingType.contains ("omnivore")) || !(eatingType.contains ("herbivore"))) {
+		
+                System.out.println("Please enter whether " + dino.name + " is a carnivore, omnivore or herbivore. ");
+		eatingType = newname1.next( );
+
+		if (eatingType.contains ("carnivore")) || (eatingType.contains ("omnivore")) || (eatingType.contains ("herbivore")){
+		break;		
+		}
+		
+
+            	}		
+	
+			
+ 
+        
+        
     /*hungry dinosaur needs to go hunting 
 	commit changes for herbivore from uni to create loop until correct eating type is entered
 	create while loop */
@@ -67,7 +83,7 @@ Create if statement for the eating type of the dinosaur- omnivore...*/
 	
         if (dino.hungerLevel <=5) {
             //System.out.println (dino.hungerLevel <=5);
-            if (eatingType.contains ("carnivore") | eatingType.contains ("omnivore")){
+            if (eatingType.contains ("carnivore") || eatingType.contains ("omnivore")){
                 System.out.println( dino.name + "is hungry, so it is time to go hunting.");
             }
 
@@ -105,4 +121,3 @@ class Dinosaur {
     String name;
     int hungerLevel; 
 }
-
