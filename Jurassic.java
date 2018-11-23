@@ -23,7 +23,8 @@ class Jurassic {
         
         describeDino(dino);
         dino.hungerLevel = setHungerLevel();	
-        checkHungerLevel(dino);   
+        checkHungerLevel(dino);  
+        setHealthLevel(dino)
         
     }// END main
 	
@@ -83,7 +84,7 @@ class Jurassic {
 
     //Checking hunger level of dinosaur
     public static void checkHungerLevel(Dinosaur dino)
-    {
+        {
         // Sets dinosaur's diet
         Scanner newname1 = new Scanner( System.in );
         System.out.println("Is " + dino.name + " a carnivore, herbivore or omnivore?");
@@ -92,13 +93,13 @@ class Jurassic {
         //Validating diet input 
         while (true) 
         {
-            //Correct diet input
+            //Correct input for dinosaur's diet 
             if((eatingType.contains ("carnivore")) ||(eatingType.contains ("omnivore")) || (eatingType.contains ("herbivore")))
             {
                 break;
             }
             
-            //Incorrect diet input
+            //Error message for incorrect input for dinosaur's diet 
             else
             {
                 System.out.println("Please enter whether " + dino.name + " is a carnivore, omnivore or herbivore. ");
@@ -112,6 +113,20 @@ class Jurassic {
             //Dinosaur is hunting
             if (eatingType.contains ("carnivore") || eatingType.contains ("omnivore")){
                 System.out.println( dino.name + " is hungry, so it is time to go hunting.");
+
+                System.out.println( "Ssssh!" + dino.name + " can hear something. Do you want to go check out what's happening?")
+                String answer = scanner.nextLine().toLowerCase();
+
+                /*
+                loop: while no... for loop  print, there is another dinosaur... this is c chance to go hunt... do you wan to hun the dinosaur? loop yuntil yes.. 
+                */
+
+                while (answer.contains "no")
+                {
+
+                }
+
+
             }
 
             //Dinosaur is not hunting
@@ -134,12 +149,30 @@ class Jurassic {
     5)ask user how old their dinosaur is
 
     6) IMPORTANT: Ask user to describe dinosaur (adjectives), description stored in array, for loop limit to 5 adjectives
-    6.1) User enters a number, loop for no. of times user to describes animal 
+    6.1) User enters a number, loop for no. of times user to describes dinosaur
+    7)Level 7: Use for loop within while loop for validation?  
+
 */
-}//END checkHungerLevel
+    }//END checkHungerLevel
+
+    public static int setHealthLevel (Dinosaur dino) 
+    {
+        Scanner scanner = new Scanner(System.in );
+        System.out.println("How old is " + dino.name + " ?")
+        dino.age = scanner.nextInt() 
+
+        while (dino.age <=200)
+        {
+            for (int i =1; i< )
+        }
+    
+        return healthLevel; 
+    }//END setHealthLevel
+
 }//END Jurassic class
 
 class Dinosaur {
     String name;
     int hungerLevel; 
+    int age;
 }//END Dinosaur class
