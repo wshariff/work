@@ -1,7 +1,7 @@
 import java.util.Scanner;
 import java.util.Arrays;
 
-class SonTest 
+class Music 
 { 
 	public static void main (String [] p)
 	{
