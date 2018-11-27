@@ -24,14 +24,13 @@ class Music
 			System.out.println("How many times in thousands, has it been downloaded?\n");			
 			int downloads = scan.nextInt();
 			total = total + downloads;
-			
-			if (downloads > downloads) 
+			int compare = 0;
+			String downloadSong;
+			if (compare <= downloads) 
 			{
-				
+				compare = downloads;
+				downloadSong = song;
 			}
-			
-				
-
 		}
 		
 		System.out.println("The song downloaded the most is "); //declare variable for song name with highest download
