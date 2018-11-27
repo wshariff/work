@@ -33,7 +33,7 @@ class Music
 			}
 		}
 		
-		System.out.println("The song downloaded the most is "); //declare variable for song name with highest download
+		System.out.println("The song downloaded the most is " + downloadSong); //declare variable for song name with highest download
 		System.out.println("The total number of downloads of these 4 songs are " + total*1000); //declare variable for the total downloads
 	
 
