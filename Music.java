@@ -1,7 +1,7 @@
 import java.util.Scanner;
 import java.util.Arrays;
 
-class Music 
+class SonTest 
 { 
 	public static void main (String [] p)
 	{
@@ -15,6 +15,10 @@ class Music
 		Scanner scan = new Scanner (System.in);
 		int total = 0;
 
+		int compare = 0;
+		String downloadSong =  " ";
+
+
 		for (int i = 0; i<=3; i++) 
 		{		
 
@@ -24,8 +28,7 @@ class Music
 			System.out.println("How many times in thousands, has it been downloaded?\n");			
 			int downloads = scan.nextInt();
 			total = total + downloads;
-			int compare = 0;
-			String downloadSong;
+			
 			if (compare <= downloads) 
 			{
 				compare = downloads;
@@ -37,12 +40,13 @@ class Music
 		System.out.println("The total number of downloads of these 4 songs are " + total*1000); //declare variable for the total downloads
 	
 
-		//Array for the song names
-	/*
+	// Array for the song names
+	
+	//CREATE ARRAY FOR SONG NAMES + DOWNLOAD
+	
         String[] songName = new String[4];
         
         number.nextLine();
-
         
         for(int i=0; i<iAnimalNumber; i++){
             System.out.println("Enter an animal ");
@@ -51,7 +55,7 @@ class Music
       
       	Arrays.sort(animals);
         System.out.print("Your animals are: "+ Arrays.toString(animals));
-	*/
+	
 
 	//Array for the songs number of downloads
 
