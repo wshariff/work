@@ -135,8 +135,8 @@ class Jurassic
                                 }
                                 System.out.println("GO!");
                                 System.out.println(dino.name + " has eaten the T-rex!");
-                                System.out.println("Hunger Level is " + (dino.hungerLevel + 2);
-                                System.out.println(dino.name + " is now full.";
+                                System.out.println("Hunger Level is " + (dino.hungerLevel + 2));
+                                System.out.println(dino.name + " is now full.");
                                 break;   
                         }
                     }
