@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=Musuem
+comment1.params=p
+comment1.target=void\ main(java.lang.String[])
+comment2.params=
+comment2.target=java.lang.String\ askRoom()
+comment3.params=Letter\ objectA\ objectB\ objectC
+comment3.target=void\ roomInfo(java.lang.String,\ MuseumObject,\ MuseumObject,\ MuseumObject)
+numComments=4
