@@ -4,14 +4,16 @@
 import java.util.Scanner; 
 import java.util.Random; 
 import java.util.Arrays;
+import java.io.*;
+import java.io.IOException;
 
 // This is a program that allows users to look after a variety of dinosaurs by feeding and protecting them whilst in danger. 
 
 class Jurassic 
 {
-
-    public static void main ( String [] args) 
+    public static void main ( String [] args) throws FileNotFoundException
     {
+        
         jurassicWorld();
 
         Dinosaur dino = new Dinosaur();
@@ -19,60 +21,138 @@ class Jurassic
 
         System.out.println("Please name the species of your dinosaur."); 
         String name1 = scanner.next();
-
+        
         setName (dino,name1);
         System.out.println( getName(dino) + " is cool.");
         
         describeDino(dino);
-        dino.hungerLevel = setHungerLevel();	
+        setHungerLevel(dino);
+        getHungerLevel(dino);	
+        setHealthLevel(dino);
+        getHealthLevel(dino);
         checkHungerLevel(dino);  
-        //setHealthLevel(dino)
-        
-    }// END main
 
+        System.out.println("Would you like to save the Dinosaur?");
+        Scanner save = new Scanner( System.in );
+        String saveAnswer = save.next().toLowerCase();
+
+
+        //save Dinosaur 
+        if (saveAnswer.equals("yes"))
+        {
+            write(dino);
+            read();
+        }
+
+        //Exit program
+        if (saveAnswer.equals ("no"))
+        {
+            System.exit (0);
+        }
+    }
+
+    //Writes the information to the file 
+    public static void write(Dinosaur dino)
+    {
+
+        //in order to aviod problems with file input and output we need to use try and catch
+
+        try
+        {
+            FileWriter fw = new FileWriter("hello.txt");    //create a file called hello.txt
+            PrintWriter pw = new PrintWriter(fw);         //Printwriter allows us to write to the file which is miniproject.it takes in filewriter object
+
+            String name = getName(dino);
+            int healthLevel  = getHealthLevel(dino);
+            int hungerLevel = getHungerLevel(dino); 
+
+
+            // Prints message
+            pw.println("Data saved");
+            pw.println(name);
+            pw.println(hungerLevel);
+            pw.println(healthLevel);
+            pw.close();            // must close it, after printing it out 
+        }
+
+        catch(Exception e)
+        {
+            System.out.println("Error! File not found" );
+        }
+        
+    }
+
+    //Reads the information to the file 
+    public static void read()
+    {
+        try
+        {
+            FileReader fr = new FileReader("hello.txt");
+            BufferedReader br = new BufferedReader (fr);
+            
+            String message;
+
+            while((message = br.readLine())!=null)
+            {
+                System.out.println(message);
+            }
+            br.close();
+        }
+
+        catch(Exception e)
+        {
+            System.out.println("File is not Found");
+        }
+    }
+
+    //Introducing the game message
     public static void jurassicWorld()
     {
         System.out.println("This is a program that stimulates bio-engineered dinosaurs who need you to look after them.");
         System.out.println(" ");
+    }
 
-    }// END JurassicWorld
-
-    //Assigns the name of the dinosaur 
+    //Sets the name of the dinosaur 
     public static void setName (Dinosaur dino, String name1) 
     {
         dino.name = name1;
-    }//END setName
+    }
 
     // Gets the name of the dinosaur
     public static String getName (Dinosaur dino)
     {
         return dino.name;
-    }//END getName
+    }
 
     //Describing the dinosaur 
     public static void describeDino(Dinosaur dino) 
     {
-        int highHealth = 10;
-        dino.healthLevel = highHealth; 
-        System.out.println("Health Level is " + dino.healthLevel); 
-        System.out.println(dino.name + " is healthy."); 
-
         //Array for description of dinosaur 
         Scanner scanner = new Scanner(System.in ); 
         String[] adjectives  = new String[3];
-
-        System.out.println("Please enter 3 descriptions of " + dino.name );
         
         // Loop for number of descriptions
         for (int i = 0; i < adjectives.length; i++) 
         {
+            System.out.println(" ");
+            System.out.println("Please enter a descriptions of " + dino.name );
             adjectives[i] = scanner.nextLine();
-            System.out.println(dino.name + " is " + adjectives[i]);
-        }//END for loop
-    }//END describeDino
+            
+        }
+        sortDescription(dino, adjectives);
+    }
+
+    //Sorts the description of dinosaur
+    public static void sortDescription(Dinosaur dino, String[] adjectives)
+    {
+        //Sorting dino adjectives in alphabetic order
+        System.out.println(" ");
+        Arrays.sort(adjectives);
+        System.out.println(dino.name + " is " + Arrays.toString(adjectives));
+    }
 
     //Setting the hunger level of the dinosaur
-    public static int setHungerLevel( ) 
+    public static void setHungerLevel(Dinosaur dino) 
     {
         int min = 0;
         int max = 9;
@@ -81,16 +161,34 @@ class Jurassic
         Random rand = new Random();
 
         int hungerLevel = rand.nextInt((max - min) + 1);
-        
-        return hungerLevel;
+        dino.hungerLevel = hungerLevel;
     }
-    //END setHungerLevel
+    
+    // Getting hunger level of dinosaur 
+    public static int getHungerLevel(Dinosaur dino) 
+    {
+        return dino.hungerLevel;
+    }
+
+    //  Setting health level of dinosaur 
+    public static void setHealthLevel(Dinosaur dino)
+    {
+        int highHealth = 10;
+        dino.healthLevel = highHealth; 
+    }
+
+    //Getting health level of dinosaur 
+    public static int getHealthLevel(Dinosaur dino)
+    { 
+        return dino.healthLevel;
+    }
 
     //Checking hunger level of dinosaur
     public static void checkHungerLevel(Dinosaur dino)
     {
         // Sets dinosaur's diet
         Scanner newname1 = new Scanner( System.in );
+        System.out.println(" ");
         System.out.println("Is " + dino.name + " a carnivore, herbivore or omnivore?");
         String eatingType = newname1.next( );
 
@@ -109,148 +207,134 @@ class Jurassic
                 System.out.println("Please enter whether " + dino.name + " is a carnivore, omnivore or herbivore. ");
                 eatingType = newname1.next( );
             }
-        }// END while loop		
+        }	
 
         //Hungry dinosaur
         if (dino.hungerLevel <=5) 
         {
             System.out.println("Hunger level is "+ dino.hungerLevel); 
-            //Dinosaur is hunting
+
+            //Dinosaur can go hunting
             if (eatingType.contains ("carnivore") || eatingType.contains ("omnivore"))
             {
                 System.out.println( dino.name + " is hungry.");
+
                 System.out.println("Would " + dino.name + " like to hunt?");
                 Scanner scanner = new Scanner(System.in ); 
                 String answer = scanner.nextLine().toLowerCase();
                 
-                    if (answer.contains ("yes"))
-                    {
-                        while (answer.contains("yes"))
-                        {
-                            System.out.println("Get ready in");
-                        
-                                for(int i = 5; i>0; i--) 
-                                {
-                                    System.out.println(i);
-                                }
-                                System.out.println("GO!");
-                                System.out.println(dino.name + " has eaten the T-rex!");
-                                System.out.println("Hunger Level is " + (dino.hungerLevel + 2));
-                                System.out.println(dino.name + " is now full.");
-                                break;   
-                        }
-                    }
-
-                    else if (answer.contains ("no"))
-                    {
-                        dino.healthLevel = 3;
-                        System.out.println("Health Level is " + dino.healthLevel);
-                        System.out.println(dino.name + " is sick.");
-                    }
-
-                    else {
-                        System.out.println("Please enter whether " + dino.name + " ready for a hunt. ");
-                        eatingType = newname1.next( );
-                    }
-                    
-            }//END if statement
-            
-
-            //Dinosaur is not hunting
-            if (eatingType.contains ("herbivore")) 
-            {
-                System.out.println( dino.name + " is hungry, so it is time to go find plants.");
-                System.out.println("That was quick!" + dino.name + " is eating plants.");
-
-                System.out.println("Hunger Level is " + (dino.hungerLevel + 1)); 
-            }
-        } //END if statement
-
-    // Full dinosaur is then under attack 
-        else if (dino.hungerLevel >=6) 
-        {
-            System.out.println("Hunger level is " + dino.hungerLevel); 
-            System.out.println(dino.name + " is not hungry.");
-            System.out.println( "But " + dino.name + " is in danger and needs your help.");
-            System.out.println("T-Rex is looking for its next prey. ");
-
-            while (true) 
-            {
-                for (int j=0; j<=4; j++)
+                //Dinosaur wants to go hunting
+                if (answer.contains ("yes"))
                 {
-                    System.out.println("Do you want to attack?");
-                    Scanner scanner = new Scanner(System.in ); 
-                    String answer = scanner.nextLine().toLowerCase(); 
-
-                    if (dino.healthLevel<=0)
+                    while (answer.contains("yes"))
                     {
-                        System.out.println("Health Level is " + dino.healthLevel);
-                        System.out.println("GAME OVER");
-                    } 
-
-                        int value = dino.healthLevel-1;
-                        System.out.print(value);
-                        for (int k= 0; k<=dino.healthLevel; k++)
-                        {
-                            System.out.println("Do you want to attack?");
-
-                            if(answer.contains("yes")){
-            
+                        System.out.println("Get ready in");
                     
-                                answer = scanner.nextLine().toLowerCase();
-                                System.out.println("Health Level is " + value--);
+                            //Countdown loop
+                            for(int i = 5; i>0; i--) 
+                            {
+                                System.out.println(i);
                             }
-                            else if (answer.contains("no")) {
-                                System.out.println("Health Level is " + value);
-                                System.out.println(dino.name + " is healthy.");
-                                break;
-                            }
-                            
-                            
-                        }
-                        break;
-            }//END while loop
-            break;
-        }//End else if
 
-            //
-            
-            
-            //Error message for incorrect input for dinosaur's diet 
-            /*else
+                            System.out.println("GO!");
+                            System.out.println(dino.name + " has eaten the T-rex!");
+
+                            //Full dinosaur
+                            System.out.println("Hunger Level is " + (dino.hungerLevel + 2));
+                            System.out.println(dino.name + " is now full.");
+                            break;   
+                    }
+                }
+
+                //Sick dinosaur
+                else if (answer.contains ("no"))
+                {
+                    dino.healthLevel = 3;
+                    System.out.println("Health Level is " + dino.healthLevel);
+                    System.out.println(dino.name + " is sick.");
+                }
+
+                //Invalid answer
+                else {
+                    System.out.println("Please enter whether " + dino.name + " ready for a hunt. ");
+                    eatingType = newname1.next( );
+                }
+                
+        }
+        
+
+        //Dinosaur eats plants
+        if (eatingType.contains ("herbivore")) 
+        {
+            System.out.println( dino.name + " is hungry, so it is time to go find plants.");
+            System.out.println("That was quick!" + dino.name + " is eating plants.");
+
+            //Full dinosaur 
+            System.out.println("Hunger Level is " + (dino.hungerLevel + 1)); 
+        }
+    }
+
+// Full dinosaur is then under attack 
+    else if (dino.hungerLevel >=6) 
+    {
+        System.out.println("Hunger level is " + dino.hungerLevel); 
+        System.out.println(dino.name + " is not hungry.");
+        System.out.println( "But " + dino.name + " is in danger and needs your help.");
+        System.out.println("T-Rex is looking for its next prey. ");
+
+        //Continue loop
+        while (true) 
+        {
+            //Asking dino to attack loop
+            for (int j=0; j<=4; j++)
             {
-                System.out.println("Please enter whether " + dino.name + " is a carnivore, omnivore or herbivore. ");
-                eatingType = newname1.next( );
-            }*/ 
-    } //END checkHungerLevel
-}//END Jurassic
+                System.out.println("Do you want to attack?");
+                Scanner scanner = new Scanner(System.in ); 
+                String answer = scanner.nextLine().toLowerCase(); 
+
+                //Game over
+                if (dino.healthLevel<=0)
+                {
+                    System.out.println("Health Level is " + dino.healthLevel);
+                    System.out.println("GAME OVER");
+                } 
+
+                    //Decrease health level
+                    int value = dino.healthLevel-1;
+                    System.out.print(value);
+
+                    //Checking dino wants to attack loop
+                    for (int k= 0; k<=dino.healthLevel; k++)
+                    {
+                        System.out.println("Do you want to attack?");
+
+                        //Dino attacks 
+                        if(answer.contains("yes"))
+                        {
+                            answer = scanner.nextLine().toLowerCase();
+                            System.out.println("Health Level is " + value--);
+                        }
+
+                        //Dino doesn't attack 
+                        else if (answer.contains("no")) 
+                        {
+                            System.out.println("Health Level is " + value);
+                            System.out.println(dino.name + " is healthy.");
+                            break;
+                        }
+                        
+                        
+                    } break;
+                } break;
+            }
+        }
+    }
 }
 
-
-        /*ideas 1)dinosaur is full, can go find somewhere to go sleep or go to sleep.
-    2) interspecies rivalry or carnivore attack = dinosaur needs to defend themselves 
-    3)dinosaur is sick/injured
-    4) old dinosaur can't defend itself that well 
-    5)ask user how old their dinosaur is
-
-    6) IMPORTANT: Ask user to describe dinosaur (adjectives), description stored in array, for loop limit to 5 adjectives
-    6.1) User enters a number, loop for no. of times user to describes dinosaur
-    7)Level 7: dino hungry, want to go for a hunt? while (yes), get ready, in ... for loop 5, 4, 3, 2,1,, system.out " Go!"
-    7.1) Hungry dino, doesn't want to hunt = sick dino, low healthlevel 
-*/
-
-    /*public static int setHealthLevel (Dinosaur dino) 
-    {
-        Scanner scanner = new Scanner(System.in );
-        System.out.println("How old is " + dino.name + " ?")
-        dino.age = scanner.nextInt() 
-    
-        return healthLevel; 
-    }//END setHealthLevel*/
-
-class Dinosaur {
+//Dinosaur record 
+class Dinosaur 
+{
     String name;
     int hungerLevel; 
-    int age;
     int healthLevel;
-}//END Dinosaur class
+}
